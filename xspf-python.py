@@ -133,3 +133,5 @@ for topic, timestamp in data.items():
 ## Writing (appending) to a xspf [Part-2/2]
 with open(f'{vid}.xspf', 'a') as obj:
     obj.write(bookmark[:-2] + '</vlc:option>\n            </extension>\n        </track>\n    </trackList>\n    <extension application="http://www.videolan.org/vlc/playlist/0">\n        <vlc:item tid="0"/>\n    </extension>\n</playlist>')
+
+input('\nDone! Press any key to exit.')
