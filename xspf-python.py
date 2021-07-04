@@ -7,8 +7,8 @@
 
 ## Written in Python with Notepad++
 
-## Works for Windows (both x86 and x64 builds)
-## Not tested for Mac and Linux
+## Works on Windows (both x86 and x64 builds)
+## Not tested on Mac and Linux
 
 ## This is made for videos of length lesser than or 
 ## equal to 9 hrs 59 min 59s [9:59:59]
