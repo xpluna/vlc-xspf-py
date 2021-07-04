@@ -115,7 +115,7 @@ def toSec(time, decimal=False):
 with open(f'{vid}.xspf', 'w') as obj:
     obj.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">\n    <title>Playlist</title>\n    <trackList>\n        <track>\n            <location>{xspf_File_Dir}</location>\n            <duration>{toSec(vidDuration)}</duration>\n            <extension application="http://www.videolan.org/vlc/playlist/0">\n                <vlc:id>0</vlc:id>\n                <vlc:option>bookmarks=')
 
-## Iterating over the list and turning into a dictionary
+## Iterating over the list and turning it into a dictionary
  
 data = {}
 ## data = {'topic': timestamp}
