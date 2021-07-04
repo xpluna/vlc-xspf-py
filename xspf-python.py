@@ -33,7 +33,7 @@
 
 lines = [] ## To store file contents
 
-with open('D:\\Downloads\\_Miscellaneous\\stamps.txt', 'r') as obj:
+with open('stamps.txt', 'r') as obj:
     for line in obj.readlines():
         lines.append(line.rstrip())
     
