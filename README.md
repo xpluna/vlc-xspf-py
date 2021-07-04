@@ -27,3 +27,5 @@
 ![2](https://i.imgur.com/VsLPg9a.png)
 <br>
 ![3](https://i.imgur.com/JiscIHu.png)
+
+<br>Feel free to open an issue or star the rep =)
