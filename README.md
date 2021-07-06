@@ -14,7 +14,7 @@
 ## Instructions
 - Store the timestamps and topics separated by a space in a<br>text file named *stamps.txt* in the same directory of this (*xspf-python.py*) file.
 
-- The timestamp should be in a **HH:MM:SS** format with no additional initial characters.
+- The timestamp should be in a **H:MM:SS** format with no additional initial characters.
 
 - Follow the program.
 
