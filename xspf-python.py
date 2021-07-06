@@ -30,24 +30,27 @@
 
 ######################################################################
 ######################################################################
+from pymediainfo import MediaInfo
+import os
+
+os.system("pip install pymediainfo")
 
 lines = [] ## To store file contents
 
-with open('stamps.txt', 'r') as obj:
+with open('D:\\Downloads\\_Miscellaneous\\stamps.txt', 'r') as obj:
     for line in obj.readlines():
         lines.append(line.rstrip())
     
     while '' in lines:
         lines.remove('') ## Eliminate pesky blankspaces
 
-print("##############################\n" + 
+print("\n##############################\n" + 
       "##       Project XSPF       ##\n" +
       "##############################\n\n")
 
 print(f'Finished reading \'stamps.txt\'...\nTimestamp Count = {len(lines)}\n\n')
 
-vidDuration = str(input('Video duration in H:MM:SS format\n>>> ')).strip()
-vidDir = str(input("\nVideo location/directory\n>>> ")).strip()
+vidDir = str(input("Video location/directory\n>>> ")).strip()
 vid = str(input('\nVideo name [extension exclusive]\n>>> ')).strip()
 vidExt = str(input('\nVideo extension [include .]\n>>> '))
 
@@ -110,12 +113,16 @@ def toSec(time, decimal=False):
     elif decimal == True:
         duration += '.000'
         return duration
-    
+
+## Millisecond length
+fpath = vidDir.replace('\\', '\\\\') + '/' + vid + vidExt
+msl = MediaInfo.parse(f"{fpath}").tracks[0].duration
+
 ## Writing to a xspf [Part-1/2]
 with open(f'{vid}.xspf', 'w') as obj:
-    obj.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">\n    <title>Playlist for {vid}</title>\n    <trackList>\n        <track>\n            <location>{xspf_File_Dir}</location>\n            <duration>{toSec(vidDuration)}</duration>\n            <extension application="http://www.videolan.org/vlc/playlist/0">\n                <vlc:id>0</vlc:id>\n                <vlc:option>bookmarks=')
+    obj.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">\n    <title>Playlist</title>\n    <trackList>\n        <track>\n            <location>{xspf_File_Dir}</location>\n            <duration>{msl}</duration>\n            <extension application="http://www.videolan.org/vlc/playlist/0">\n                <vlc:id>0</vlc:id>\n                <vlc:option>bookmarks=')
 
-## Iterating over the list and turning it into a dictionary
+## Iterating over the list and turning into a dictionary
  
 data = {}
 ## data = {'topic': timestamp}
@@ -133,5 +140,5 @@ for topic, timestamp in data.items():
 ## Writing (appending) to a xspf [Part-2/2]
 with open(f'{vid}.xspf', 'a') as obj:
     obj.write(bookmark[:-2] + '</vlc:option>\n            </extension>\n        </track>\n    </trackList>\n    <extension application="http://www.videolan.org/vlc/playlist/0">\n        <vlc:item tid="0"/>\n    </extension>\n</playlist>')
-
-input('\nDone! Press ENTER key to exit.')
+    
+input('\nDone! Press any key to exit.')
