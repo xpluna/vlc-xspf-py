@@ -17,7 +17,7 @@
 ## in a text file named stamps.txt in the same directory 
 ## of this file
 
-## The timestamp should be in a HH:MM:SS format 
+## The timestamp should be in a H:MM:SS format 
 ## with no additional initial characters.
 
 ## Example of stamps.txt
